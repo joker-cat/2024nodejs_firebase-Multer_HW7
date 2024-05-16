@@ -7,7 +7,6 @@ const resErrorProd = (err, res) => {
   } else {
     // 菲欄位驗證的其餘錯誤
     // 後端印出 log 紀錄
-    console.error("出現重大錯誤", err);
     res.status(500).json({
       status: "error",
       message: "系統錯誤，請恰系統管理員",

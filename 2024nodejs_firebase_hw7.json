@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "a33c0c60-9907-4b25-9879-0d7c01ffd3d7",
-		"name": "2024nodejs_JWT_hw6",
+		"_postman_id": "080084ec-8c98-40d3-a587-f65174daa9f6",
+		"name": "2024nodejs_firebase_hw7",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "29889308"
 	},
@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"tomcat\",\r\n    \"email\":\"tomcat@gmail.com\",\r\n    \"password\":\"tomcat123456\",\r\n    \"confirmPassword\":\"tomcat123456\"\r\n}",
+							"raw": "{\r\n    \"name\":\"joker\",\r\n    \"email\":\"joker@gmail.com\",\r\n    \"password\":\"joker123456\",\r\n    \"confirmPassword\":\"joker123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -52,7 +52,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"tomcat@gmail.com\",\r\n    \"password\":\"tomcat123456\"\r\n}",
+							"raw": "{\r\n    \"email\":\"joker@gmail.com\",\r\n    \"password\":\"joker123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -116,8 +116,9 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDQ0NmNiMmFlYzI0MmMwYzcxYWY2MSIsImlhdCI6MTcxNTc1MDY4NiwiZXhwIjoxNzE2MzU1NDg2fQ.28oCD1Qbh_p-k1FwsGWyOk1nx0EZKmDrPsd36kJ-CMY",
-								"type": "text"
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDYxYTcyZmRhODkwNGI0ZTY2NGZmOCIsImlhdCI6MTcxNTg3MDMyMiwiZXhwIjoxNzE2NDc1MTIyfQ.lAZryp64onuNl_6ujsWAHhXQatNgX5rDq8f7s02kc5s",
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"url": {
@@ -142,7 +143,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDQ0NmNiMmFlYzI0MmMwYzcxYWY2MSIsImlhdCI6MTcxNTc1MDY4NiwiZXhwIjoxNzE2MzU1NDg2fQ.28oCD1Qbh_p-k1FwsGWyOk1nx0EZKmDrPsd36kJ-CMY",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDYxYTcyZmRhODkwNGI0ZTY2NGZmOCIsImlhdCI6MTcxNTg3MDMyMiwiZXhwIjoxNzE2NDc1MTIyfQ.lAZryp64onuNl_6ujsWAHhXQatNgX5rDq8f7s02kc5s",
 								"type": "text"
 							}
 						],
@@ -169,6 +170,43 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "uploadImg",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDYxYTcyZmRhODkwNGI0ZTY2NGZmOCIsImlhdCI6MTcxNTg3MDMyMiwiZXhwIjoxNzE2NDc1MTIyfQ.lAZryp64onuNl_6ujsWAHhXQatNgX5rDq8f7s02kc5s",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3005/upload/file",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"upload",
+								"file"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -182,7 +220,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"tomcat\",\r\n    \"email\":\"tomcat@gmail.com\",\r\n    \"password\":\"tomcat123456\",\r\n    \"confirmPassword\":\"tomcat123456\"\r\n}",
+							"raw": "{\r\n    \"name\":\"joker\",\r\n    \"email\":\"joker@gmail.com\",\r\n    \"password\":\"joker123456\",\r\n    \"confirmPassword\":\"joker123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -190,13 +228,12 @@
 							}
 						},
 						"url": {
-							"raw": "https://nodejs-jwt-hw6.onrender.com/users/sign_up",
-							"protocol": "https",
+							"raw": "http://localhost:3005/users/sign_up",
+							"protocol": "http",
 							"host": [
-								"nodejs-jwt-hw6",
-								"onrender",
-								"com"
+								"localhost"
 							],
+							"port": "3005",
 							"path": [
 								"users",
 								"sign_up"
@@ -219,7 +256,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"tomcat@gmail.com\",\r\n    \"password\":\"tomcat123456\"\r\n}",
+							"raw": "{\r\n    \"email\":\"joker@gmail.com\",\r\n    \"password\":\"joker123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -227,13 +264,12 @@
 							}
 						},
 						"url": {
-							"raw": "https://nodejs-jwt-hw6.onrender.com/users/sign_in",
-							"protocol": "https",
+							"raw": "http://localhost:3005/users/sign_in",
+							"protocol": "http",
 							"host": [
-								"nodejs-jwt-hw6",
-								"onrender",
-								"com"
+								"localhost"
 							],
+							"port": "3005",
 							"path": [
 								"users",
 								"sign_in"
@@ -263,13 +299,12 @@
 							}
 						},
 						"url": {
-							"raw": "https://nodejs-jwt-hw6.onrender.com/users/updatePassword",
-							"protocol": "https",
+							"raw": "http://localhost:3005/users/updatePassword",
+							"protocol": "http",
 							"host": [
-								"nodejs-jwt-hw6",
-								"onrender",
-								"com"
+								"localhost"
 							],
+							"port": "3005",
 							"path": [
 								"users",
 								"updatePassword"
@@ -285,18 +320,18 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDQ0NmNiMmFlYzI0MmMwYzcxYWY2MSIsImlhdCI6MTcxNTc1MDY4NiwiZXhwIjoxNzE2MzU1NDg2fQ.28oCD1Qbh_p-k1FwsGWyOk1nx0EZKmDrPsd36kJ-CMY",
-								"type": "text"
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDYxYTcyZmRhODkwNGI0ZTY2NGZmOCIsImlhdCI6MTcxNTg3MDMyMiwiZXhwIjoxNzE2NDc1MTIyfQ.lAZryp64onuNl_6ujsWAHhXQatNgX5rDq8f7s02kc5s",
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"url": {
-							"raw": "https://nodejs-jwt-hw6.onrender.com/users/profile",
-							"protocol": "https",
+							"raw": "http://localhost:3005/users/profile",
+							"protocol": "http",
 							"host": [
-								"nodejs-jwt-hw6",
-								"onrender",
-								"com"
+								"localhost"
 							],
+							"port": "3005",
 							"path": [
 								"users",
 								"profile"
@@ -312,7 +347,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDQ0NmNiMmFlYzI0MmMwYzcxYWY2MSIsImlhdCI6MTcxNTc1MDY4NiwiZXhwIjoxNzE2MzU1NDg2fQ.28oCD1Qbh_p-k1FwsGWyOk1nx0EZKmDrPsd36kJ-CMY",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDYxYTcyZmRhODkwNGI0ZTY2NGZmOCIsImlhdCI6MTcxNTg3MDMyMiwiZXhwIjoxNzE2NDc1MTIyfQ.lAZryp64onuNl_6ujsWAHhXQatNgX5rDq8f7s02kc5s",
 								"type": "text"
 							}
 						],
@@ -326,16 +361,51 @@
 							}
 						},
 						"url": {
-							"raw": "https://nodejs-jwt-hw6.onrender.com/users/profile",
-							"protocol": "https",
+							"raw": "http://localhost:3005/users/profile",
+							"protocol": "http",
 							"host": [
-								"nodejs-jwt-hw6",
-								"onrender",
-								"com"
+								"localhost"
 							],
+							"port": "3005",
 							"path": [
 								"users",
 								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "uploadImg",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDYxYTcyZmRhODkwNGI0ZTY2NGZmOCIsImlhdCI6MTcxNTg3MDMyMiwiZXhwIjoxNzE2NDc1MTIyfQ.lAZryp64onuNl_6ujsWAHhXQatNgX5rDq8f7s02kc5s",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3005/upload/file",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"upload",
+								"file"
 							]
 						}
 					},

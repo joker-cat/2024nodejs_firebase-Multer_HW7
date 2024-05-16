@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors());
 app.use(logger("dev"));
 app.use(postRouter);
-app.use('/upload',uploadRouter);
+app.use('/upload', uploadRouter);
 app.use('/users', userRouter);
 app.all("*", (req, res) => {
   res.send(`找不到 ${req.originalUrl} 路徑`);
@@ -42,8 +42,8 @@ const dbUrl = process.env.URL.replace("<password>", process.env.PASSWORD);
 const localUrl = process.env.LOCAL_URL;
 
 mongoose
-  .connect(localUrl)
-  // .connect(dbUrl)
+  // .connect(localUrl)
+  .connect(dbUrl)
   .then(() => console.log("資料庫連線成功"))
   .catch(() => console.error("資料庫連線失敗"));
 
@@ -68,6 +68,13 @@ app.use(function (err, req, res, next) {
     err.message = errorArray;
     err.isOperational = true; // 表示為欄位驗證錯誤
     return resErrorProd(err, res);
+  }
+
+  if (err.name === "MulterError" && err.message === "File too large") {
+    return res.status(400).json({
+      status: "error",
+      message: "圖片限制2MB以內",
+    });
   }
   resErrorProd(err, res);
 });

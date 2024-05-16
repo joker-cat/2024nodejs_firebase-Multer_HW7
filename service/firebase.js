@@ -16,8 +16,8 @@ const config = {
 };
 
 admin.initializeApp({
-    credential: admin.credential.cert(config),
-    storageBucket: `${process.env.FIREBASE_PROJECT_ID}.appspot.com`,
+  credential: admin.credential.cert(config),
+  storageBucket: `${process.env.FIREBASE_PROJECT_ID}.appspot.com`,
 });
 
 module.exports = admin;

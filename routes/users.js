@@ -7,11 +7,6 @@ const handErrorAsync = require("../service/handErrorAsync");
 const { sendJWT, isAuth } = require("../service/statusHandles");
 const userRouter = express.Router();
 
-// userRouter.get("/user", handErrorAsync(async (req, res, next) => {
-//   const data = await User.find();
-//   resSuccessWrite(res, 200, data);
-// }
-// ));
 
 // 註冊
 userRouter.post("/sign_up", handErrorAsync(async (req, res, next) => {
@@ -45,10 +40,11 @@ userRouter.post("/sign_in", handErrorAsync(async (req, res, next) => {
   if (validateEmail) return next(appError(400, "郵件未填寫"));
   const validatePsd = validator.isEmail(password.trim());
   if (validatePsd) return next(appError(400, "密碼未填寫"));
+  const isUser = await User.findOne({ email });
+  if (!isUser) return next(appError(400, "帳號或密碼錯誤"));
 
   // password原本為隱藏，透過select('+password')顯示取得
   const user = await User.findOne({ email }).select('+password');
-
   // 輸入密碼與雜湊密碼比對
   const auth = await bcrypt.compare(password, user.password);
   if (!auth) return next(appError(400, "密碼錯誤"));
@@ -59,7 +55,6 @@ userRouter.post("/sign_in", handErrorAsync(async (req, res, next) => {
 
 //找回密碼
 userRouter.post("/updatePassword", isAuth, handErrorAsync(async (req, res, next) => {
-
   //再次檢查是否有登入，即將更改密碼
   if (req.user === undefined) return next(appError(401, '你尚未登入！', next));
 
@@ -82,7 +77,6 @@ userRouter.post("/updatePassword", isAuth, handErrorAsync(async (req, res, next)
 
 //找回密碼
 userRouter.get("/profile", isAuth, handErrorAsync(async (req, res, next) => {
-  console.log(123);
   //再次檢查是否有登入，即將更改密碼
   if (req.user === undefined) return next(appError(401, '你尚未登入！', next));
   const user = await User.findById(req.user.id);

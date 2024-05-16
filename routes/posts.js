@@ -7,7 +7,6 @@ const handErrorAsync = require("../service/handErrorAsync");
 const postRouter = express.Router();
 
 
-
 postRouter.get(`/posts`, handErrorAsync(async (req, res) => {
   const timeSort = req.query.timeSort == "asc" ? "createdAt" : "-createdAt";
   const q = req.query.q !== undefined ? { content: new RegExp(req.query.q) } : {};

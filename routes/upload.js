@@ -1,7 +1,5 @@
 const express = require('express');
-const sizeOf = require('image-size');
 const { v4: uuidv4 } = require('uuid');
-const { ImgurClient } = require('imgur');
 const appError = require("../service/appError");
 const handleErrorAsync = require("../service/handErrorAsync");
 const firebaseAdmin = require('../service/firebase');
@@ -10,40 +8,18 @@ const upload = require('../service/image');
 const router = express.Router();
 const bucket = firebaseAdmin.storage().bucket();
 
-const {isAuth,generateSendJWT} = require('../service/statusHandles');
-router.post('/', isAuth,upload,handleErrorAsync(async (req, res, next)=> {
-    if(!req.files.length) {
-      return next(appError(400,"尚未上傳檔案",next));
-    }
-    const dimensions = sizeOf(req.files[0].buffer);
-    if(dimensions.width !== dimensions.height) {
-      return next(appError(400,"圖片長寬不符合 1:1 尺寸。",next))
-    }
-    const client = new ImgurClient({
-      clientId: process.env.IMGUR_CLIENTID,
-      clientSecret: process.env.IMGUR_CLIENT_SECRET,
-      refreshToken: process.env.IMGUR_REFRESH_TOKEN,
-    });
-    const response = await client.upload({
-      image: req.files[0].buffer.toString('base64'),
-      type: 'base64',
-      album: process.env.IMGUR_ALBUM_ID
-    });
-    res.status(200).json({
-        status:"success",
-        imgUrl: response.data.link
-    })
-}));
+const { isAuth, sendJWT } = require('../service/statusHandles');
 
-router.post('/file',upload,handleErrorAsync(async (req, res, next)=> {
+// 上傳圖片
+router.post('/file', isAuth, upload, handleErrorAsync(async (req, res, next) => {
+  if (!req.user) return next(appError(400, "尚未登入"));
+  if (!req.files.length) return next(appError(400, "尚未上傳檔案"));
+  if (req.files.length > 1) return next(appError(400, "每次上傳限一個檔案"));
 
-  if(!req.files.length) {
-    return next(appError(400,"尚未上傳檔案",next));
-  }
   // 取得上傳的檔案資訊列表裡面的第一個檔案
   const file = req.files[0];
   // 基於檔案的原始名稱建立一個 blob 物件
-  const blob = bucket.file(`images/${uuidv4()}.${file.originalname.split('.').pop()}`);
+  const blob = bucket.file(`nodejs_hw7/${uuidv4()}.${file.originalname.split('.').pop()}`);
   // 建立一個可以寫入 blob 的物件
   const blobStream = blob.createWriteStream()
 
@@ -56,25 +32,21 @@ router.post('/file',upload,handleErrorAsync(async (req, res, next)=> {
     };
     // 取得檔案的網址
     blob.getSignedUrl(config, (err, fileUrl) => {
-      res.send({
-        fileUrl
-      });
+      res.status(200).json({
+        status: "success",
+        imgUrl: fileUrl
+      })
     });
   });
 
   // 如果上傳過程中發生錯誤，會觸發 error 事件
   blobStream.on('error', (err) => {
-    res.status(500).send('上傳失敗');
+    next(appError(400, "上傳失敗"));
   });
 
   // 將檔案的 buffer 寫入 blobStream
   blobStream.end(file.buffer);
 
-
-  // res.status(200).json({
-  //     status:"success",
-  //     imgUrl: response.data.link
-  // })
 }));
 
 module.exports = router;
