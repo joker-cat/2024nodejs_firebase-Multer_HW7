@@ -228,12 +228,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3005/users/sign_up",
-							"protocol": "http",
+							"raw": "https://two024nodejs-firebase-multer-hw7.onrender.com/users/sign_up",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"two024nodejs-firebase-multer-hw7",
+								"onrender",
+								"com"
 							],
-							"port": "3005",
 							"path": [
 								"users",
 								"sign_up"
@@ -264,12 +265,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3005/users/sign_in",
-							"protocol": "http",
+							"raw": "https://two024nodejs-firebase-multer-hw7.onrender.com/users/sign_in",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"two024nodejs-firebase-multer-hw7",
+								"onrender",
+								"com"
 							],
-							"port": "3005",
 							"path": [
 								"users",
 								"sign_in"
@@ -299,12 +301,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3005/users/updatePassword",
-							"protocol": "http",
+							"raw": "https://two024nodejs-firebase-multer-hw7.onrender.com/users/updatePassword",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"two024nodejs-firebase-multer-hw7",
+								"onrender",
+								"com"
 							],
-							"port": "3005",
 							"path": [
 								"users",
 								"updatePassword"
@@ -321,17 +324,17 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDYxYTcyZmRhODkwNGI0ZTY2NGZmOCIsImlhdCI6MTcxNTg3MDMyMiwiZXhwIjoxNzE2NDc1MTIyfQ.lAZryp64onuNl_6ujsWAHhXQatNgX5rDq8f7s02kc5s",
-								"type": "text",
-								"disabled": true
+								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3005/users/profile",
-							"protocol": "http",
+							"raw": "https://two024nodejs-firebase-multer-hw7.onrender.com/users/profile",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"two024nodejs-firebase-multer-hw7",
+								"onrender",
+								"com"
 							],
-							"port": "3005",
 							"path": [
 								"users",
 								"profile"
@@ -361,12 +364,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3005/users/profile",
-							"protocol": "http",
+							"raw": "https://two024nodejs-firebase-multer-hw7.onrender.com/users/profile",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"two024nodejs-firebase-multer-hw7",
+								"onrender",
+								"com"
 							],
-							"port": "3005",
 							"path": [
 								"users",
 								"profile"
@@ -397,12 +401,13 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3005/upload/file",
-							"protocol": "http",
+							"raw": "https://two024nodejs-firebase-multer-hw7.onrender.com/upload/file",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"two024nodejs-firebase-multer-hw7",
+								"onrender",
+								"com"
 							],
-							"port": "3005",
 							"path": [
 								"upload",
 								"file"
