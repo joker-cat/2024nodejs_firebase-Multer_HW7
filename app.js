@@ -6,12 +6,14 @@ const logger = require("morgan");
 
 const postRouter = require("./routes/posts");
 const userRouter = require("./routes/users");
+const uploadRouter = require("./routes/upload");
 const { resErrorProd, resErrorDev } = require("./service/nodeEnvError");
 const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(logger("dev"));
 app.use(postRouter);
+app.use('/upload',uploadRouter);
 app.use('/users', userRouter);
 app.all("*", (req, res) => {
   res.send(`找不到 ${req.originalUrl} 路徑`);

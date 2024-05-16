@@ -1,6 +1,6 @@
 const express = require("express");
-const { resSuccessWrite } = require("../module/resModule");
-const validateKey = require("../module/validateModule");
+const { resSuccessWrite } = require("../service/resModule");
+const validateKey = require("../service/validateModule");
 const Post = require("../model/PostModel");
 const appError = require("../service/appError");
 const handErrorAsync = require("../service/handErrorAsync");

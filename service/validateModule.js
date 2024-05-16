@@ -1,4 +1,4 @@
-const appError = require("../service/appError");
+const appError = require("./appError");
 
 // patch 驗證 key 是否有另外屬性
 const keyArray = [

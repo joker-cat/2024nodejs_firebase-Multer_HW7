@@ -4,7 +4,7 @@ const validator = require("validator");
 const User = require("../model/UserModel");
 const appError = require("../service/appError");
 const handErrorAsync = require("../service/handErrorAsync");
-const { sendJWT, isAuth } = require("../module/statusHandles");
+const { sendJWT, isAuth } = require("../service/statusHandles");
 const userRouter = express.Router();
 
 // userRouter.get("/user", handErrorAsync(async (req, res, next) => {
